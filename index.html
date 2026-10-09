@@ -1,1 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="description" content="Kittens of Darkness - survive the night against a horde of zombie kittens.">
+  <title>Kittens of Darkness</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐈‍⬛</text></svg>">
+  <!-- Fonts are optional: the game falls back to system fonts if offline -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=Nunito:wght@600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="game"></canvas>
 
+  <!-- In-game HUD -->
+  <div id="hud" class="hidden">
+    <div id="xp-bar"><div id="xp-fill"></div></div>
+    <div id="hud-top">
+      <div id="hud-left">
+        <div id="hp-bar"><div id="hp-fill"></div><span id="hp-text">100 / 100</span></div>
+        <div id="level-text">LV 1</div>
+      </div>
+      <div id="time-text">0:00</div>
+      <div id="hud-right">
+        <span id="kill-text">💀 0</span>
+        <button id="btn-mute" class="icon-btn" title="Sound (M)" aria-label="Toggle sound">🔊</button>
+        <button id="btn-pause" class="icon-btn" title="Pause (P / Esc)" aria-label="Pause">⏸</button>
+      </div>
+    </div>
+    <div id="slots"></div>
+  </div>
+
+  <div id="banner"></div>
+
+  <!-- Main menu -->
+  <div id="menu" class="overlay">
+    <div class="panel menu-panel">
+      <div class="eyes" aria-hidden="true"><i></i><i></i></div>
+      <h1 class="title">Kittens<br><small>of</small> Darkness</h1>
+      <p class="tagline">The graveyard is full of zombie kittens. You are the last living cat. Survive until dawn.</p>
+      <button id="btn-start" class="primary">Start the night</button>
+      <ul class="howto">
+        <li><b>Move</b> with WASD or arrow keys (or drag on a touchscreen)</li>
+        <li>Your claws, bones and yarn <b>attack automatically</b></li>
+        <li>Collect blue soul shards to <b>level up</b> and pick upgrades</li>
+        <li>Survive <b>15 minutes</b> to see the sunrise</li>
+      </ul>
+      <p id="best" class="best"></p>
+    </div>
+  </div>
+
+  <!-- Level up -->
+  <div id="levelup" class="overlay hidden">
+    <div class="panel wide">
+      <h2 id="levelup-title">Level up!</h2>
+      <p class="sub">Pick one (or press 1, 2, 3)</p>
+      <div id="choices"></div>
+    </div>
+  </div>
+
+  <!-- Pause -->
+  <div id="pause" class="overlay hidden">
+    <div class="panel">
+      <h2>Paused</h2>
+      <button id="btn-resume" class="primary">Resume</button>
+      <button id="btn-quit" class="secondary">Quit to menu</button>
+    </div>
+  </div>
+
+  <!-- Game over / victory -->
+  <div id="gameover" class="overlay hidden">
+    <div class="panel">
+      <h2 id="over-title">You died</h2>
+      <p id="over-text" class="over-text"></p>
+      <button id="btn-again" class="primary">Try again</button>
+      <button id="btn-menu" class="secondary">Main menu</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
